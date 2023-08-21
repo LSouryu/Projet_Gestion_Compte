@@ -1,19 +1,13 @@
 <?php
 
-namespace codeBanque ;
-
 class Agence
 {
     private int $codeAgence;
-    private string $nom;
-    private string $adresse;
+    private string $nomAgence;
+    private string $adresseAgence;
 
-    function __construct($codeAgence, $nom, $adresse)
-    {
-        $this->codeAgence = $codeAgence;
-        $this->nom = $nom;
-        $this->adresse = $adresse;
-    }
+    function __construct()
+    {}
 
     /**
      * Get the value of codeAgence
@@ -32,66 +26,80 @@ class Agence
      *
      * @return self
      */
-    public function setCodeAgence(int $codeAgence): self
+    public function setCodeAgence(): self
     {
+        $codeAgence = readline("Veuillez entrer un nombre entre 100 et 999 : ");
         $this->codeAgence = $codeAgence;
 
         return $this;
     }
 
     /**
-     * Get the value of nom
+     * Get the value of nomAgence
      *
      * @return string
      */
-    public function getNom(): string
+    public function getNomAgence(): string
     {
-        return $this->nom;
+        return $this->nomAgence;
     }
 
     /**
-     * Set the value of nom
+     * Set the value of nomAgence
      *
-     * @param string $nom
+     * @param string $nomAgence
      *
      * @return self
      */
-    public function setNom(string $nom): self
+    public function setNomAgence(): self
     {
-        $this->nom = $nom;
+        $nomAgence = readline("Veuillez entrer le nom de l'agence : ");
+        $this->nomAgence = $nomAgence;
 
         return $this;
     }
 
     /**
-     * Get the value of adresse
+     * Get the value of adresseAgence
      *
      * @return string
      */
-    public function getAdresse(): string
+    public function getAdresseAgence(): string
     {
-        return $this->adresse;
+        return $this->adresseAgence;
     }
 
     /**
-     * Set the value of adresse
+     * Set the value of adresseAgence
      *
-     * @param string $adresse
+     * @param string $adresseAgence
      *
      * @return self
      */
-    public function setAdresse(string $adresse): self
+    public function setAdresseAgence(): self 
     {
-        $this->adresse = $adresse;
+    $codePostal = trim(intval(readline("Veuillez saisir un code postal : ")));
+    $city = trim((readline("Veuillez saisir un nom de ville : ")));
+    $number = trim(intval(readline("Veuillez saisir un numéro de rue : ")));
+    $street = trim((readline("Veuillez saisir le nom de la rue : ")));
+    $adresseAgence = "$number $street, $codePostal $city";
+    $this->adresseAgence = $adresseAgence;
 
-        return $this;
+    return $this;
     }
 }
 
+echo "Création d'une nouvelle agence" . PHP_EOL;
 
+$agence = new Agence();
+$agence->setCodeAgence();
+$agence->setNomAgence();
+$agence->setAdresseAgence();
 
+echo "Agence créée avec succès !" . PHP_EOL;
 
+echo "Code de l'agence : " . $agence->getCodeAgence() . PHP_EOL;
+echo "Nom de l'agence : " . $agence->getNomAgence() . PHP_EOL;
+echo "Adresse de l'agence : " . $agence->getAdresseAgence() . PHP_EOL;
 
-
-
-
+?>
