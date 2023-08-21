@@ -1,0 +1,31 @@
+<?php
+class BankAccount{
+    private $solde;
+    private $numerocompte;
+    private $nomTitulaire;
+    private $typeCompte;
+
+    public function __construct($solde, $numerocompte, $nomTitulaire, $typeCompte) {
+        $this-> solde =$solde ;
+        $this-> numerocompte=$numerocompte;
+        $this-> nomTitulaire=$nomTitulaire;
+        $this-> typeCompte=$typeCompte;
+    
+        
+    }
+
+    public function depot($montant){
+        if($montant>0){
+        $this->solde+=$montant;
+        return "Déposé:$". number_format($montant,2)."\n";
+    }else{
+        return "montant invalide\n";
+
+    }
+}
+
+public function retrait($montant);{
+    if ($montant > 0 && $montant <=$this-> solde) {
+        $this 
+    }
+}
