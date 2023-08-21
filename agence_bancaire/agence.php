@@ -102,4 +102,17 @@ echo "Code de l'agence : " . $agence->getCodeAgence() . PHP_EOL;
 echo "Nom de l'agence : " . $agence->getNomAgence() . PHP_EOL;
 echo "Adresse de l'agence : " . $agence->getAdresseAgence() . PHP_EOL;
 
+$data = [
+    'Code Agence' => $agence->getCodeAgence(),
+    'Nom Agence' => $agence->getNomAgence(),
+    'Adresse Agence' => $agence->getAdresseAgence()
+];
+
+$csvFilename = 'agence.csv';
+$file = fopen($csvFilename, 'w');
+fputcsv($file, array_keys($data));
+fputcsv($file, $data);
+fclose($file);
+
+echo "Données exportées avec succès dans $csvFilename" . PHP_EOL;
 ?>
