@@ -41,7 +41,7 @@ while ($i === 0) {
         "-----------------------Bienvenue dans le menu Gestion Banque----------------------" . "\n" .
         "----------------------------------------------------------------------------------" . "\n"
     );
-    change_color("green");
+    change_color("purple");
     echo (
         "1. Créer une Agence" . "\n" . 
         "2. Créer un Client" . "\n" .
@@ -58,7 +58,7 @@ while ($i === 0) {
     echo ("9. Quitter le programe" . "\n");
     change_color("blue");
     echo ("----------------------------------------------------------------------------------" . "\n");
-    change_color("green");
+    change_color("purple");
     $choix = intval(readline("choisisser votre option (1-9) : "));
     change_color("blue");
     echo ("----------------------------------------------------------------------------------" . "\n");
