@@ -6,23 +6,6 @@ class Agence
     private string $nomAgence;
     private string $adresseAgence;
 
-<<<<<<< HEAD
-    public function __construct($name , $adress){
-        $this ->name = $name;
-        $this ->adress =$adress;
-    }
-        public function addAccount($account){
-            array_push($this ->account,$account);
-
-        }
-        public function getAccount(){
-            return $this ->account;
-        }
-    }
-
-class co
-  
-=======
     function __construct()
     {}
 
@@ -133,4 +116,3 @@ fclose($file);
 
 echo "Données exportées avec succès dans $csvFilename" . PHP_EOL;
 ?>
->>>>>>> a973d5713d881fb226f8b9d2f1124bf1dd78d7f2
