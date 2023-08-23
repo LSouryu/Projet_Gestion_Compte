@@ -1,4 +1,6 @@
 <?php
+
+include "setting.php";
 class BankAccount{
     private $solde;
     private $numerocompte;
@@ -38,6 +40,16 @@ public function retrait($montant){
                 return "solde: $" . number_format($this->solde,2)."\n";
 
         }
+
+        public function setSolde($solde) {
+            // vérifier que le solde est un nombre positif
+            if (is_numeric($solde) && $solde >= 0) {
+                $this->solde = $solde;
+            } else {
+                $this->solde = setting("Solde invalide. Entrez une nouvelle valeur: ");
+            }
+        }
+    
 
         public function getNumerocompte(){
                 return "numero de compte: $".$this->numerocompte."\n";
