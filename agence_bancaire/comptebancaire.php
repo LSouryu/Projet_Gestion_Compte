@@ -40,7 +40,7 @@ public function retrait($montant){
         }
 
         public function getNumerocompte(){
-                return"numerocompte: $". number_format
+                return "numero de compte: $".$this->numerocompte."\n";
         }
 
 
@@ -53,4 +53,6 @@ public function retrait($montant){
         }
     }
 
-    $moncompte = new BankAccount(1000,123456780,'johnny','courant');
+    $moncompte = new BankAccount(1000,123456780,'johnny','cheque');
+    echo $moncompte->getSolde();
+    echo $moncompte->getSolde();
