@@ -63,6 +63,18 @@ public function retrait($montant){
         public function getTypeCompte(){
             return "typeCompte: $". number_format($this->typeCompte."\n");
         }
+
+    /**
+     * Set the value of numerocompte
+     *
+     * @return  self
+     */ 
+    public function setNumerocompte($numerocompte)
+    {
+        $this->numerocompte = $numerocompte;
+
+        return $this;
+    }
     }
 
     $moncompte = new BankAccount(1000,123456780,'johnny','cheque');
