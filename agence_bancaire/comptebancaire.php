@@ -1,6 +1,8 @@
 <?php
 
-include "setting.php";
+// inclure le fichier lirevaleur.php qui contient la fonction setting
+include "lirevaleur.php";
+
 class BankAccount{
     private $solde;
     private $numerocompte;
@@ -46,6 +48,7 @@ public function retrait($montant){
             if (is_numeric($solde) && $solde >= 0) {
                 $this->solde = $solde;
             } else {
+                // appeler la fonction setting du fichier lirevaleur.php pour lire une nouvelle valeur
                 $this->solde = setting("Solde invalide. Entrez une nouvelle valeur: ");
             }
         }
@@ -71,12 +74,56 @@ public function retrait($montant){
      */ 
     public function setNumerocompte($numerocompte)
     {
-        $this->numerocompte = $numerocompte;
-
+        // vérifier que le numéro de compte est un nombre entier
+        if (is_int($numerocompte)) {
+            $this->numerocompte = $numerocompte;
+        } else {
+            // appeler la fonction setting du fichier lirevaleur.php pour lire une nouvelle valeur
+            $this->numerocompte = setting("Numéro de compte invalide. Entrez une nouvelle valeur: ");
+            // appeler récursivement la méthode setNumerocompte avec la nouvelle valeur
+            $this->setNumerocompte($numerocompte);
+        }
+        
         return $this;
     }
+
+    /**
+     * Set the value of nomTitulaire
+     *
+     * @return  self
+     */ 
+    public function setNomTitulaire($nomTitulaire)
+    {
+        // vérifier que le nom du titulaire est une chaîne de caractères non vide
+        if (is_string($nomTitulaire) && !empty($nomTitulaire)) {
+            $this->nomTitulaire = $nomTitulaire;
+        } else {
+            // appeler la fonction setting du fichier lirevaleur.php pour lire une nouvelle valeur
+            $this->nomTitulaire = setting("Nom du titulaire invalide. Entrez une nouvelle valeur: ");
+            // appeler récursivement la méthode setNomTitulaire avec la nouvelle valeur
+            $this->setNomTitulaire($nomTitulaire);
+        }
+        
+        return $this;
     }
 
-    $moncompte = new BankAccount(1000,123456780,'johnny','cheque');
-    echo $moncompte->getSolde();
-    echo $moncompte->getSolde();
+    /**
+     * Set the value of typeCompte
+     *
+     * @return  self
+     */ 
+    public function setTypeCompte($typeCompte)
+    {
+        // vérifier que le type de compte est soit 'cheque' soit 'epargne'
+        if ($typeCompte == 'cheque' || $typeCompte == 'epargne') {
+            $this->typeCompte = $typeCompte;
+        } else {
+            // appeler la fonction setting du fichier lirevaleur.php pour lire une nouvelle valeur
+            $this->typeCompte = setting("Type de compte invalide. Entrez une nouvelle valeur: ");
+            // appeler récursivement la méthode setTypeCompte avec la nouvelle valeur
+            $this->setTypeCompte($typeCompte);
+        }
+        
+        return $this;
+    }
+}
